@@ -25,12 +25,12 @@ export class Game {
 
         this.highScore = localStorage.getItem("highScore") || 0;
 
-        this.player = new Player(this.gameArea, "./resources/player.gif", 500, 300, 2);
+        this.player = new Player(this.gameArea, "/resources/player.gif", 500, 300, 2);
 
         if (mode === "multi") {
-            this.player2 = new Player(this.gameArea, "./resources/bot.gif", 200, 100, 2);
+            this.player2 = new Player(this.gameArea, "/resources/bot.gif", 200, 100, 2);
         } else {
-            this.bot = new Bot(this.gameArea, "./resources/bot.gif", 200, 100, 1.5);
+            this.bot = new Bot(this.gameArea, "/resources/bot.gif", 200, 100, 1.5);
         }
 
         this.setDifficulty();

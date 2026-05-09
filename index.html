@@ -12,7 +12,7 @@
         rel="stylesheet">
     <title>🌿 Garden Battle</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="/resources/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./resources/logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -62,51 +62,19 @@
             <button id="restartBtn">🔄 Play Again</button>
         </div>
 
-        <!-- ===== MOBILE D-PAD — Player 1 (bottom-left) ===== -->
-        <div id="dpad-p1" class="dpad" style="display:none;">
-            <div class="dpad-label">P1</div>
-            <div class="dpad-grid">
-                <div></div>
-                <button class="dpad-btn" data-key="ArrowUp"    id="p1-up"    aria-label="Up">▲</button>
-                <div></div>
-                <button class="dpad-btn" data-key="ArrowLeft"  id="p1-left"  aria-label="Left">◀</button>
-                <button class="dpad-btn dpad-center"           id="p1-center" aria-label="Center">●</button>
-                <button class="dpad-btn" data-key="ArrowRight" id="p1-right" aria-label="Right">▶</button>
-                <div></div>
-                <button class="dpad-btn" data-key="ArrowDown"  id="p1-down"  aria-label="Down">▼</button>
-                <div></div>
-            </div>
-        </div>
-
-        <!-- ===== MOBILE D-PAD — Player 2 (bottom-right-ish) ===== -->
-        <div id="dpad-p2" class="dpad dpad-p2" style="display:none;">
-            <div class="dpad-label">P2</div>
-            <div class="dpad-grid">
-                <div></div>
-                <button class="dpad-btn" data-key="w" id="p2-up"    aria-label="Up">▲</button>
-                <div></div>
-                <button class="dpad-btn" data-key="a" id="p2-left"  aria-label="Left">◀</button>
-                <button class="dpad-btn dpad-center"   id="p2-center" aria-label="Center">●</button>
-                <button class="dpad-btn" data-key="d" id="p2-right" aria-label="Right">▶</button>
-                <div></div>
-                <button class="dpad-btn" data-key="s" id="p2-down"  aria-label="Down">▼</button>
-                <div></div>
-            </div>
-        </div>
-
         <!-- ===== POWER-UP TOAST ===== -->
         <div id="powerupToast"></div>
 
     </div>
 
     <!-- ===== AUDIO ===== -->
-    <audio id="eatSound"      src="resources/eat.mp3"></audio>
-    <audio id="winSound"      src="resources/win.mp3"></audio>
-    <audio id="drawSound"     src="resources/draw.mp3"></audio>
-    <audio id="gameOverSound" src="resources/gameover.mp3"></audio>
-    <audio id="fastSound"     src="resources/fastfood.mp3"></audio>
-    <audio id="freezeSound"   src="resources/freezing.mp3"></audio>
-    <audio id="bgSound"       src="resources/background.mp3" loop></audio>
+    <audio id="eatSound"      src="./resources/eat.mp3"></audio>
+    <audio id="winSound"      src="./resources/win.mp3"></audio>
+    <audio id="drawSound"     src="./resources/draw.mp3"></audio>
+    <audio id="gameOverSound" src="./resources/gameover.mp3"></audio>
+    <audio id="fastSound"     src="./resources/fastfood.mp3"></audio>
+    <audio id="freezeSound"   src="./resources/freezing.mp3"></audio>
+    <audio id="bgSound"       src="./resources/background.mp3" loop></audio>
 
     <script type="module" src="./js/main.js"></script>
 

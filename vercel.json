@@ -1,13 +1,9 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "version": 2,
+  "builds": [
+    { "src": "index.html", "use": "@vercel/static" }
   ],
-  "headers": [
-    {
-      "source": "/js/(.*)\\.js",
-      "headers": [
-        { "key": "Content-Type", "value": "application/javascript" }
-      ]
-    }
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" }
   ]
 }
