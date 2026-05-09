@@ -1,35 +1,63 @@
-// export function initControls(game) {
+export function initControls(game) {
 
-//     window.addEventListener("keydown", (e) => {
+    /* ── Keyboard ──────────────────────────────────────────────── */
+    window.addEventListener("keydown", (e) => {
+        if (game.gameOver) return;
+        if (!game.keys.includes(e.key)) game.keys.push(e.key);
+    });
 
-//         if (game.gameOver) return;
+    window.addEventListener("keyup", (e) => {
+        game.keys = game.keys.filter(k => k !== e.key);
+    });
 
-//         game.keys.push(e.key);
-//         game.player.render();
-//     });
+    /* ── Mobile D-pad helper ───────────────────────────────────── */
+    function bindDpad(padId, keyMap) {
+        const pad = document.getElementById(padId);
+        if (!pad) return;
 
-//     window.addEventListener("keyup", (e) => {
+        pad.querySelectorAll("[data-key]").forEach(btn => {
+            const key = btn.dataset.key;
 
-//         if (game.gameOver) return;
+            const press = (e) => {
+                e.preventDefault();
+                if (!game.keys.includes(key)) game.keys.push(key);
+                btn.classList.add("active");
+            };
 
-//         game.keys = game.keys.filter(k => k != e.key);
-//     });
-// }
+            const release = (e) => {
+                e.preventDefault();
+                game.keys = game.keys.filter(k => k !== key);
+                btn.classList.remove("active");
+            };
 
-export function initControls(game){
+            btn.addEventListener("touchstart",  press,   { passive: false });
+            btn.addEventListener("touchend",    release, { passive: false });
+            btn.addEventListener("touchcancel", release, { passive: false });
 
-window.addEventListener("keydown",(e)=>{
+            // Also allow mouse for desktop testing
+            btn.addEventListener("mousedown", press);
+            btn.addEventListener("mouseup",   release);
+            btn.addEventListener("mouseleave", release);
+        });
+    }
 
-if(game.gameOver) return;
+    bindDpad("dpad-p1", {
+        "dpad-up":    "ArrowUp",
+        "dpad-down":  "ArrowDown",
+        "dpad-left":  "ArrowLeft",
+        "dpad-right": "ArrowRight",
+    });
 
-if(!game.keys.includes(e.key)) game.keys.push(e.key);
+    bindDpad("dpad-p2", {
+        "dpad-up":    "w",
+        "dpad-down":  "s",
+        "dpad-left":  "a",
+        "dpad-right": "d",
+    });
 
-})
-
-window.addEventListener("keyup",(e)=>{
-
-game.keys=game.keys.filter(k=>k!==e.key);
-
-})
-
+    /* ── Show/hide P2 pad based on mode ───────────────────────── */
+    const p2pad = document.getElementById("dpad-p2");
+    if (p2pad) {
+        p2pad.style.display = game.mode === "multi" ? "grid" : "none";
+    }
 }
