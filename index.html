@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Garden Battle – a fun 2-player food-eating game with power-ups!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Outfit:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+    <title>🌿 Garden Battle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/resources/logo.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div id="gameArea">
+
+        <!-- HUD (scores / timer / power-up bars) -->
+        <div id="hud"></div>
+
+        <!-- Mute button -->
+        <button id="muteBtn" title="Toggle Sound">🔊</button>
+
+        <!-- Winner overlay (legacy, kept for JS compatibility) -->
+        <div id="winnerScreen"></div>
+
+        <!-- ===== START SCREEN ===== -->
+        <div id="startScreen" class="screen">
+
+            <!-- Starfield decoration -->
+            <div class="star-bg" id="starBg"></div>
+
+            <h1>🌿 Garden Battle</h1>
+
+            <div class="form-group">
+                <label for="levelSelect">Difficulty</label>
+                <select id="levelSelect">
+                    <option value="easy">🌱 Easy</option>
+                    <option value="medium" selected>🌿 Medium</option>
+                    <option value="hard">🔥 Hard</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="modeSelect">Game Mode</label>
+                <select id="modeSelect">
+                    <option value="bot">🤖 Player vs Bot</option>
+                    <option value="multi">👥 Player vs Player</option>
+                </select>
+            </div>
+
+            <button id="startBtn">▶ Start Game</button>
+        </div>
+
+        <!-- ===== GAME OVER SCREEN ===== -->
+        <div id="gameOverScreen" class="screen" style="display:none;">
+            <h1 id="winnerText"></h1>
+            <button id="restartBtn">🔄 Play Again</button>
+        </div>
+
+        <!-- ===== POWER-UP TOAST ===== -->
+        <div id="powerupToast"></div>
+
+    </div>
+
+    <!-- ===== AUDIO ===== -->
+    <audio id="eatSound"     src="/resources/eat.mp3"></audio>
+    <audio id="winSound"     src="resources/win.mp3"></audio>
+    <audio id="drawSound"    src="resources/draw.mp3"></audio>
+    <audio id="gameOverSound" src="resources/gameover.mp3"></audio>
+    <audio id="fastSound"    src="resources/fast food.mp3"></audio>
+    <audio id="freezeSound"  src="resources/freezing.mp3"></audio>
+    <audio id="bgSound"      src="resources/background.mp3" loop></audio>
+
+    <script type="module" src="./js/main.js"></script>
+
+    <!-- Starfield generator -->
+    <script>
+        const container = document.getElementById('starBg');
+        for (let i = 0; i < 80; i++) {
+            const s = document.createElement('span');
+            s.style.cssText = `
+                left: ${Math.random() * 100}%;
+                top:  ${Math.random() * 100}%;
+                width:  ${Math.random() * 2.5 + 1}px;
+                height: ${Math.random() * 2.5 + 1}px;
+                --d: ${(Math.random() * 3 + 2).toFixed(1)}s;
+                --delay: ${(Math.random() * 4).toFixed(1)}s;
+            `;
+            container.appendChild(s);
+        }
+    </script>
+
+</body>
+
+</html>
